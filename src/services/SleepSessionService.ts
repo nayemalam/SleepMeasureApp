@@ -17,10 +17,10 @@ export async function getAllFamilyData(challengeIds: string[]) {
       const response = await fetch(`${CHALLENGE_API_ROUTE(challengeId)}`);
       console.log('RESPONSE: ', response);
       const result = await response.json();
-      return result.intervals; // Return just the intervals part of each result
+      return result.intervals;
     });
     const results = await Promise.all(promises);
-    // Flatten the array of intervals arrays into a single array of intervals
+
     const combinedIntervals = results.flat();
     return combinedIntervals;
   } catch (err) {

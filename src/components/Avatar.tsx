@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { theme } from '../styles/theme';
 
 type Props = {
   text: string;
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   avatarText: {
-    color: '#FFF',
+    color: theme.colors.defaultWhite,
     fontWeight: 'bold',
     fontSize: 12,
   },

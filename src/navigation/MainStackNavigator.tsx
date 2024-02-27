@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Header } from '../components/Header';
 import HomeScreen from '../screens/Home';
 import ProfileScreen from '../screens/Profile';
+import { theme } from '../styles/theme';
 import { RootStackParamList } from '../types';
 import MainTabNavigator from './MainTabNavigator';
 
@@ -14,9 +15,9 @@ const MainStackNavigator = () => {
       initialRouteName="MainTab"
       screenOptions={{
         header: () => <Header />,
-        headerTintColor: '#fff',
+        headerTintColor: theme.colors.defaultWhite,
         headerStyle: {
-          backgroundColor: '#000',
+          backgroundColor: theme.colors.defaultBlack,
         },
       }}>
       <Stack.Screen component={MainTabNavigator} name="MainTab" />

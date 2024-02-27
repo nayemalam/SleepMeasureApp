@@ -10,6 +10,7 @@ import {
 import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import EightSleepLogo from '../assets/images/logos/eight-sleep-brand.png';
+import { theme } from '../styles/theme';
 import { platform } from '../utils/constants';
 import Avatar from './Avatar';
 
@@ -28,7 +29,7 @@ export const Header = () => {
         resizeMode="contain"
       />
       <View style={styles.rightContainer}>
-        <SimpleIcon name="home" size={18} color="#FFF" />
+        <SimpleIcon name="home" size={18} color={theme.colors.defaultWhite} />
         <Text style={styles.temperatureText}>76°</Text>
       </View>
     </View>
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#000',
+    backgroundColor: theme.colors.defaultBlack,
     paddingHorizontal: 10,
     marginTop: platform.ios ? 50 : 0,
   },
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   initialsText: {
-    color: '#FFF',
+    color: theme.colors.defaultWhite,
     marginLeft: 6,
   },
   headerLogo: {
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   temperatureText: {
-    color: '#FFF',
+    color: theme.colors.defaultWhite,
     marginLeft: 6,
   },
 });
