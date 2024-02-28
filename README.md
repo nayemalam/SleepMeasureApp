@@ -9,6 +9,16 @@ This app, designed for family mode, enables family members to conveniently view 
     - [Assumptions Made](#assumptions-made)
     - [Notes](#notes)
     - [Troubleshooting](#troubleshooting)
+- [Getting Started (React Native Generated README)](#getting-started-react-native-generated-readme)
+  - [Step 1: Start the Metro Server](#step-1-start-the-metro-server)
+  - [Step 2: Start your Application](#step-2-start-your-application)
+    - [For Android](#for-android)
+    - [For iOS](#for-ios)
+  - [Step 3: Modifying your App](#step-3-modifying-your-app)
+  - [Congratulations! :tada:](#congratulations-tada)
+    - [Now what?](#now-what)
+- [Troubleshooting](#troubleshooting-1)
+- [Learn More](#learn-more)
 
 ## Screenshot
 <img width="394" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/7a52beae-3c70-4866-9084-abe58a90f5ae">
@@ -76,6 +86,7 @@ yarn android # or react-native run-android
 - There is a Details screen which is implemented for one type of timeseries data, but it can be extended to show other types of data (types of data can be seen in `types/index.ts` -> `DetailsType`)
 - Added two tabs on the bottom, but the second tab is not necessary, it was just added to show the UI design and also to test selecting a different family member
 - For "tnt" I just counted the total number of tnt's there are, technically it should be extended to show how many were tosses and how many were turns, at this moment there is a Details view that shows at what time the tnt's happened and how many during that time
+- Instead of adding a percentage of sleep fitness, I opted to create a sleep fitness status (`src/utils/index.ts` -> `sleepScoreLabel`), where 0-60 is "Poor", 61-80 is "Fair", 81-90 is "Good" and 91-100 is "Excellent" - I feel that this might provide the user better understanding and feedback
 - No calendar picker - the days were implemented in `src/components/CircularDayScoreSelector` - though it would be better to have a calendar picker
 - The timeframe selector (`src/components/TimeframeSelector`) on the top (DAYS, WEEKS, MONTHS, YEARS) is not implemented, but the UI is designed to show the selector
 - There is definitely a lot of places for improvement, but I tried to keep it focused on the main features laid out on this [figma](https://www.figma.com/file/wDc9mTgq4Px1CKn57mNkrQ/Mobile-Eng-Take-Home?node-id=0%3A1)
