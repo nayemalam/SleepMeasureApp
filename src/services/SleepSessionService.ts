@@ -1,5 +1,6 @@
 import { CHALLENGE_API_ROUTE } from './api';
 export async function getProfileData(challengeId: string) {
+  if (!challengeId) throw new Error('No challengeId provided');
   try {
     const response = await fetch(`${CHALLENGE_API_ROUTE(challengeId)}`);
     const result = await response.json();

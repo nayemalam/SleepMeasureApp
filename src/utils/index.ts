@@ -5,6 +5,7 @@ import {
   SleepInterval,
   SleepStage,
   TimeSeriesDataKey,
+  TossNTurn,
 } from '../types';
 import { TempBedC, TempRoomC, TimeSeriesData } from './../types/index';
 
@@ -37,11 +38,6 @@ export const aggregateTimeseriesData = (
       const data = interval.timeseries[key];
       switch (key) {
         case 'tnt':
-          // For arrays of numbers, we can directly concatenate.
-          aggregatedTimeseries[key] = aggregatedTimeseries[key].concat(
-            data as number[],
-          );
-          break;
         case 'respiratoryRate':
         case 'heartRate':
         case 'tempRoomC':
@@ -68,6 +64,15 @@ export const aggregateStages = (
     return [...acc, ...curr.stages];
   }, []);
 };
+
+export const aggregateTossNTurns = (
+  sleepIntervals: SleepInterval[],
+): TossNTurn[] => {
+  return sleepIntervals.reduce((acc: TossNTurn[], curr: SleepInterval) => {
+    return [...acc, ...curr.timeseries.tnt];
+  }, []);
+};
+
 export const calculateStartTime = (sleepIntervals: SleepInterval[]): string => {
   return sleepIntervals.reduce(
     (acc, session) => (!acc || session.ts < acc ? session.ts : acc),
@@ -75,7 +80,6 @@ export const calculateStartTime = (sleepIntervals: SleepInterval[]): string => {
   );
 };
 
-// Function to calculate the end time of the last interval
 export const calculateOutOfBedTime = (
   sleepIntervals: SleepInterval[],
 ): Moment => {
@@ -88,16 +92,16 @@ export const calculateOutOfBedTime = (
   return outOfBedTime;
 };
 
-// Function to calculate the time when the user fell asleep
 export const calculateFellAsleepTime = (
   sleepIntervals: SleepInterval[],
   startTime: string,
 ): Moment => {
   const aggregatedStages = aggregateStages(sleepIntervals);
-  let fellAsleepTime = moment(startTime); // Initialize with the in bed time
+  let fellAsleepTime = moment(startTime);
   for (const stage of aggregatedStages) {
+    // exit the first time when we find a sleep stage
     if (stage.stage === 'light' || stage.stage === 'deep') {
-      break; // Stop at the first light or deep sleep stage
+      break;
     }
     fellAsleepTime.add(stage.duration, 'seconds');
   }
@@ -105,7 +109,6 @@ export const calculateFellAsleepTime = (
   return fellAsleepTime;
 };
 
-// Function to calculate wake up time
 export const calculateWakeUpTime = (
   sleepIntervals: SleepInterval[],
   startTime: string,
@@ -115,8 +118,9 @@ export const calculateWakeUpTime = (
     let intervalEndTime = moment(interval.ts);
     interval.stages.forEach(stage => {
       intervalEndTime.add(stage.duration, 'seconds');
+      // sets the wake up time to the end of the awake stage
       if (stage.stage === 'awake') {
-        wakeUpTime = moment(intervalEndTime); // This will end up being the last "awake" stage found
+        wakeUpTime = moment(intervalEndTime);
       }
     });
   });
@@ -129,7 +133,7 @@ export const calculateTotalDurationAsleep = (
 ): number => {
   return sleepIntervals.reduce((acc, session) => {
     const duration = session.stages.reduce((stageAcc, stage) => {
-      // Exclude 'awake' stages from the total sleep duration
+      // excludes awake stages from the total sleep duration
       if (stage.stage === 'awake') {
         return stageAcc;
       }
@@ -144,6 +148,7 @@ export const renderSleepStatus = (
   deepSleepHours: number,
   lightSleepHours: number,
 ) => {
+  // TODO: note these hours are just hypothetical
   // if the user has slept more than 8 hours, they are well-rested
   if (hoursSlept >= deepSleepHours) {
     return '🤩';

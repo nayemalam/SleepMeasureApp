@@ -14,6 +14,7 @@ type ThemeType = {
     darkGrayBlue: string;
     charcoalGray: string;
     gunMetalGray: string;
+    maroon: string;
   };
   pageTitleLarge: TextStyle;
 };
@@ -32,6 +33,7 @@ export const theme: ThemeType = {
     darkGrayBlue: '#3d5875',
     charcoalGray: '#2D2D2D',
     gunMetalGray: '#303033',
+    maroon: '#730548',
   },
   pageTitleLarge: {
     color: '#FFF',

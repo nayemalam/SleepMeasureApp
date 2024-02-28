@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
 import { SleepStage as SleepStageType, TIMEFRAMES_TYPE } from '../types';
-import { TIMEFRAME_KEY_VALUE_TYPE } from './../types/index';
+import { DetailsType, TIMEFRAME_KEY_VALUE_TYPE } from './../types/index';
 
 export const platform = {
   ios: Platform.OS === 'ios',
@@ -31,4 +31,13 @@ export const TIMEFRAME_KEY_VALUE: TIMEFRAME_KEY_VALUE_TYPE = {
   WEEK: 'WEEK',
   MONTH: 'MONTH',
   YEAR: 'YEAR',
+};
+
+export const DetailsTypeLabels: { [key in DetailsType]: string } = {
+  tnt: 'Toss and Turn',
+  heartRate: 'Heart Rate',
+  respiratoryRate: 'Respiratory Rate',
+  tempBedC: 'Bed Temperature',
+  tempRoomC: 'Room Temperature',
+  stages: 'Sleep Stages',
 };

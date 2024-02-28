@@ -11,8 +11,10 @@ export type RespiratoryRate = [string, number];
 
 export type HeartRate = [string, number];
 
+export type TossNTurn = [string, number];
+
 export interface TimeSeriesData {
-  tnt: number[];
+  tnt: TossNTurn[];
   tempRoomC: TempRoomC[];
   tempBedC: TempBedC[];
   respiratoryRate: RespiratoryRate[];
@@ -40,11 +42,23 @@ export type FamilyMember = {
   relation: string;
 };
 
+export type DetailsType =
+  | 'tnt'
+  | 'tempRoomC'
+  | 'tempBedC'
+  | 'respiratoryRate'
+  | 'heartRate'
+  | 'stages';
+
 export type RootStackParamList = {
   MainTab: undefined;
   Home: undefined;
   Profile: {
     familyMember: FamilyMember;
+  };
+  Details: {
+    sleepIntervals: SleepInterval[];
+    type: DetailsType;
   };
 };
 

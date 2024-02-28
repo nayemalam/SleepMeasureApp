@@ -6,6 +6,7 @@ import { ActivityIndicator } from 'react-native-paper';
 import BedTemperatureChart from '../../components/BedTemperatureChart';
 import CardContainer from '../../components/CardContainer';
 import CircularDayScoreSelector from '../../components/CircularDayScoreSelector';
+import GenericErrorView from '../../components/GenericErrorView';
 import NoActivityView from '../../components/NoActivityView';
 import RoomTemperatureChart from '../../components/RoomTemperatureChart';
 import ScoreCircleProgress from '../../components/ScoreProgressCircle';
@@ -29,27 +30,19 @@ type Props = {
 };
 
 export default function ProfileScreen({ route }: Props) {
+  if (!route.params) {
+    return (
+      <GenericErrorView
+        title="No family member selected"
+        goBackMessage="View family members"
+      />
+    );
+  }
   const familyMember = route.params?.familyMember as FamilyMember;
   const [memberSleepInfo, setMemberSleepInfo] = useState<SleepInterval[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState<string>('');
-
-  const fetchProfile = useCallback(async () => {
-    setSelectedDate(moment().format('YYYY-MM-DD'));
-
-    try {
-      const results = await sleepSessionService.getProfileData(familyMember.id);
-      setMemberSleepInfo(results?.intervals);
-    } catch (error) {
-      console.error('Failed to fetch data:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [familyMember.id]);
-
-  useEffect(() => {
-    fetchProfile();
-  }, [fetchProfile]);
+  const [error, setError] = useState<string>('');
 
   const { dataByDate, averageScoresByDate, mostRecentDate } = useMemo(() => {
     // TODO: remove - measuring the performance of this
@@ -91,7 +84,28 @@ export default function ProfileScreen({ route }: Props) {
       mostRecentDate: latestDate,
       averageScoresByDate,
     };
-  }, [memberSleepInfo]);
+  }, [memberSleepInfo, selectedDate]);
+
+  const fetchProfile = useCallback(async () => {
+    setSelectedDate(moment().format('YYYY-MM-DD'));
+
+    try {
+      const results = await sleepSessionService.getProfileData(
+        familyMember?.id,
+      );
+      setMemberSleepInfo(results?.intervals);
+      setError('');
+    } catch (e) {
+      setError(e as string);
+      console.error('Failed to fetch data:', e);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [route]);
+
+  useEffect(() => {
+    fetchProfile();
+  }, [fetchProfile]);
 
   if (isLoading) {
     return (
@@ -106,7 +120,13 @@ export default function ProfileScreen({ route }: Props) {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={theme.pageTitleLarge}>
+      <Text
+        style={[
+          theme.pageTitleLarge,
+          {
+            marginTop: 10,
+          },
+        ]}>
         {familyMember.name}'s Sleep Report
       </Text>
 
@@ -155,7 +175,7 @@ export default function ProfileScreen({ route }: Props) {
             title="Tosses and turns"
             moreDetailsInfo={{
               sleepIntervals: dataByDate[selectedDate],
-              navigationScreenPath: 'TossAndTurnsDetails',
+              type: 'tnt',
             }}>
             <TossAndTurnsChart sleepIntervals={dataByDate[selectedDate]} />
           </CardContainer>

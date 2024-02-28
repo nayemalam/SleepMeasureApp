@@ -1,8 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { DetailsScreenNavigationProp } from '../screens/Details';
 import { theme } from '../styles/theme';
-import { SleepInterval } from '../types';
+import { DetailsType, SleepInterval } from '../types';
 import InfoDialog from './InfoDialog';
 
 type Props = {
@@ -11,7 +13,7 @@ type Props = {
   hideInfo?: boolean;
   moreDetailsInfo?: {
     sleepIntervals: SleepInterval[];
-    navigationScreenPath: string;
+    type: DetailsType;
   };
 };
 
@@ -22,6 +24,7 @@ const CardContainer = ({
   moreDetailsInfo,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigation = useNavigation<DetailsScreenNavigationProp>();
 
   return (
     <>
@@ -43,7 +46,10 @@ const CardContainer = ({
           <TouchableOpacity
             style={styles.moreDetailsButton}
             onPress={() => {
-              setIsOpen(true);
+              navigation.navigate('Details', {
+                sleepIntervals: moreDetailsInfo.sleepIntervals,
+                type: moreDetailsInfo.type,
+              });
             }}>
             <Text style={{ color: theme.colors.defaultWhite }}>
               More details
@@ -59,12 +65,7 @@ const CardContainer = ({
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         title={`${title} details`}
-        description={
-          // TODO: temporary - but remove conditional logic here
-          moreDetailsInfo
-            ? "Ideally we'd navigate to a more comprehensive view of the data here. For now, we'll just display a dialog."
-            : 'Description or quick insights and tips about the data.'
-        }
+        description="Description or quick insights and tips about the data."
       />
     </>
   );
