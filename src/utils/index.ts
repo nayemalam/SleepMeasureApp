@@ -8,6 +8,7 @@ import {
   TossNTurn,
 } from '../types';
 import { TempBedC, TempRoomC, TimeSeriesData } from './../types/index';
+import { SleepStageKeyValue } from './constants';
 
 export const sleepScoreLabel = (score: number) => {
   if (score < 60) {
@@ -35,21 +36,15 @@ export const aggregateTimeseriesData = (
 
   sleepIntervals.forEach(interval => {
     (Object.keys(aggregatedTimeseries) as TimeSeriesDataKey[]).forEach(key => {
-      const data = interval.timeseries[key];
-      switch (key) {
-        case 'tnt':
-        case 'respiratoryRate':
-        case 'heartRate':
-        case 'tempRoomC':
-        case 'tempBedC':
-          // For arrays of tuples, we also concatenate directly, thanks to the explicit type casting.
-          aggregatedTimeseries[key] = aggregatedTimeseries[key].concat(
-            data as TempRoomC[] | TempBedC[] | HeartRate[] | RespiratoryRate[],
-          );
-          break;
-        default:
-          // Ideally, you shouldn't reach here. This is just for exhaustive type checking.
-          throw new Error(`Unhandled timeseries data key: ${key}`);
+      if (interval.timeseries[key]) {
+        aggregatedTimeseries[key] = [
+          ...aggregatedTimeseries[key],
+          ...(interval.timeseries[key] as
+            | TempRoomC[]
+            | TempBedC[]
+            | HeartRate[]
+            | RespiratoryRate[]),
+        ];
       }
     });
   });
@@ -100,7 +95,10 @@ export const calculateFellAsleepTime = (
   let fellAsleepTime = moment(startTime);
   for (const stage of aggregatedStages) {
     // exit the first time when we find a sleep stage
-    if (stage.stage === 'light' || stage.stage === 'deep') {
+    if (
+      stage.stage === SleepStageKeyValue.light ||
+      stage.stage === SleepStageKeyValue.deep
+    ) {
       break;
     }
     fellAsleepTime.add(stage.duration, 'seconds');
@@ -119,7 +117,7 @@ export const calculateWakeUpTime = (
     interval.stages.forEach(stage => {
       intervalEndTime.add(stage.duration, 'seconds');
       // sets the wake up time to the end of the awake stage
-      if (stage.stage === 'awake') {
+      if (stage.stage === SleepStageKeyValue.awake) {
         wakeUpTime = moment(intervalEndTime);
       }
     });
@@ -133,8 +131,11 @@ export const calculateTotalDurationAsleep = (
 ): number => {
   return sleepIntervals.reduce((acc, session) => {
     const duration = session.stages.reduce((stageAcc, stage) => {
-      // excludes awake stages from the total sleep duration
-      if (stage.stage === 'awake') {
+      // excludes awake, out stages from the total sleep duration
+      if (
+        stage.stage === SleepStageKeyValue.awake ||
+        stage.stage === SleepStageKeyValue.out
+      ) {
         return stageAcc;
       }
       return stageAcc + stage.duration;

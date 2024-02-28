@@ -42,13 +42,7 @@ export type FamilyMember = {
   relation: string;
 };
 
-export type DetailsType =
-  | 'tnt'
-  | 'tempRoomC'
-  | 'tempBedC'
-  | 'respiratoryRate'
-  | 'heartRate'
-  | 'stages';
+export type DetailsType = TimeSeriesDataKey | 'stages';
 
 export type RootStackParamList = {
   MainTab: undefined;

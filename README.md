@@ -1,3 +1,59 @@
+# Family Mode Mobile App 🌘
+This app, designed for family mode, enables family members to conveniently view each other's sleep data on the Pod, offering insights into the sleep habits of your family members.
+
+## How To Run
+To run the application locally: 
+
+1. Clone repo: 
+```bash
+git clone https://github.com/nayemalam/family_mode_sleep_data.git
+```
+2. cd into the folder:
+```bash
+cd family_mode_sleep_data
+```
+3. Install dependencies:
+```bash
+yarn i
+```
+4. Install pods:
+```bash
+cd ios && pod install
+```
+5. Go back to root and run the metro server:
+```bash
+yarn start
+```
+6. Run app on ios:
+```bash
+react-native run-ios
+```
+or
+```bash
+yarn ios # this will run iPhone 15 as the simulator specified
+```
+7. Run app on android:
+```bash
+yarn android # or react-native run-android
+```
+
+
+### Assumptions Made
+- based on the annotated example [here](https://gist.github.com/maghis/8c35fe1bb5c7810bdcc6ca389c6cd702), ignored heating
+- there could be multiple intervals of sleep data for a single day, so the data is grouped by date (`screens/Profile` -> `groupedDaysByTsMap`)
+- Assumed 8 hours as deep sleep and 6 hours as light sleep (`src/components/TimeSlept`)
+
+### Notes
+- Dialogs are not implemented, but the UI is designed to show the dialog
+- There is a Details screen which is implemented for one type of timeseries data, but it can be extended to show other types of data (types of data can be seen in `types/index.ts` -> `DetailsType`)
+- Added two tabs on the bottom, but the second tab is not necessary, it was just added to show the UI design and also to test selecting a different family member
+- For "tnt" I just counted the total number of tnt's there are, technically it should be extended to show how many were tosses and how many were turns, at this moment there is a Details view that shows at what time the tnt's happened and how many during that time
+- No calendar picker - the days were implemented in `src/components/CircularDayScoreSelector` - though it would be better to have a calendar picker
+- The timeframe selector on the top (DAYS, WEEKS, MONTHS, YEARS) is not implemented, but the UI is designed to show the selector
+- There is definitely a lot of places for improvement, but I tried to keep it focused on the main features laid out on this [figma](https://www.figma.com/file/wDc9mTgq4Px1CKn57mNkrQ/Mobile-Eng-Take-Home?node-id=0%3A1)
+___
+
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started

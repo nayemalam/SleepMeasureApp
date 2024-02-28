@@ -44,6 +44,7 @@ export default function ProfileScreen({ route }: Props) {
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [error, setError] = useState<string>('');
 
+  // TODO: move to backend, we can filter the data based on the selected date and fetch instead of performing this on client side
   const { dataByDate, averageScoresByDate, mostRecentDate } = useMemo(() => {
     // TODO: remove - measuring the performance of this
     const start = performance.now();
