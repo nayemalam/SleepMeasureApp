@@ -4,10 +4,17 @@ This app, designed for family mode, enables family members to conveniently view 
 ## Table of Contents
 - [Family Mode Mobile App 🌘](#family-mode-mobile-app-)
   - [Table of Contents](#table-of-contents)
+  - [Screenshots](#screenshots)
   - [How To Run](#how-to-run)
     - [Assumptions Made](#assumptions-made)
     - [Notes](#notes)
     - [Troubleshooting](#troubleshooting)
+
+## Screenshots
+<details>
+  <summary>More screenshots</summary>
+  <img src="" width="200" />  
+</details>
 
 ## How To Run
 To run the application locally: 
