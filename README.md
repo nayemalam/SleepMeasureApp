@@ -1,6 +1,14 @@
 # Family Mode Mobile App 🌘
 This app, designed for family mode, enables family members to conveniently view each other's sleep data on the Pod, offering insights into the sleep habits of your family members.
 
+## Table of Contents
+- [Family Mode Mobile App 🌘](#family-mode-mobile-app-)
+  - [Table of Contents](#table-of-contents)
+  - [How To Run](#how-to-run)
+    - [Assumptions Made](#assumptions-made)
+    - [Notes](#notes)
+    - [Troubleshooting](#troubleshooting)
+
 ## How To Run
 To run the application locally: 
 
@@ -16,7 +24,7 @@ cd family_mode_sleep_data
 ```bash
 yarn i
 ```
-4. Install pods:
+4. Install CocoaPods (for ios):
 ```bash
 cd ios && pod install
 ```
@@ -54,12 +62,33 @@ yarn android # or react-native run-android
 - There is definitely a lot of places for improvement, but I tried to keep it focused on the main features laid out on this [figma](https://www.figma.com/file/wDc9mTgq4Px1CKn57mNkrQ/Mobile-Eng-Take-Home?node-id=0%3A1)
 - It will always show the current day's data, and I tried copying how the current Eight Sleep app design to handle when there is no data
 - Built with the latest version of React Native (0.73.4) as of today's date (Feb 28, 2024)
+
+### Troubleshooting
+Sometimes 
+```bash
+yarn start --reset-cache
+```
+is needed to clear the cache and then run `yarn ios` or `yarn android` again
+
+- if android simulator fails to boot up and it gives this error: "INSUFFICIENT STORAGE", then you can try the following:
+  - open Android Studio
+  - Under "More Actions" dropdown, click "AVD Manager"
+  - Select your device (in my case it was "Pixel 3a API 31 arm64-v8a")
+  - There is a dropdown on the right, click it and select "Edit"
+  - Select "Show Advanced Settings", scroll down and adjust the "Memory and Storage" -> "RAM" to "2048" or back to "1024" and then click "Finish"
+  - restart the simulator
+- If above doesn't work, you can click the dropdown on the right and select "Wipe Data" or "Cool Boot Now" and then restart the simulator
+
+- if ios simulator causes any issues, you can try the following:
+   - General -> Storage Settings -> Developer -> Delete Cache
+
+If all else doesn't work, I am more than happy to screen share/record the application and flow for both ios and android simulators.
 ___
 
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# Getting Started (React Native Generated README)
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
