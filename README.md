@@ -41,7 +41,7 @@ cd family_mode_sleep_data
 ```
 3. Install dependencies:
 ```bash
-yarn i
+yarn # or yarn install
 ```
 4. Install CocoaPods (for ios):
 ```bash
