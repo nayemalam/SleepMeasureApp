@@ -4,16 +4,28 @@ This app, designed for family mode, enables family members to conveniently view 
 ## Table of Contents
 - [Family Mode Mobile App 🌘](#family-mode-mobile-app-)
   - [Table of Contents](#table-of-contents)
-  - [Screenshots](#screenshots)
+  - [Screenshot](#screenshot)
   - [How To Run](#how-to-run)
     - [Assumptions Made](#assumptions-made)
     - [Notes](#notes)
     - [Troubleshooting](#troubleshooting)
 
-## Screenshots
+## Screenshot
+<img width="394" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/7a52beae-3c70-4866-9084-abe58a90f5ae">
+
 <details>
   <summary>More screenshots</summary>
-  <img src="" width="200" />  
+  <img width="1001" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/219bb1e2-efbe-4e5c-b615-1468aeb9ef30">
+  <img width="390" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/ecddebe6-ed8d-4431-9264-931c56272b4e">
+  <img width="997" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/2e81fb5c-fc7c-475d-9410-9db088d66dd1">
+  <img width="994" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/51c80af5-c499-4988-a26b-a638eef6550c">
+  <img width="1003" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/abb052ea-df8a-410b-ab37-b14571399966">
+  <img width="1009" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/bba712d3-c183-40a2-ad17-b05ee57e725a">
+  <img width="995" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/ea583d72-3436-445b-baed-1e2a3ac4753c">
+  <img width="988" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/7377a443-8862-407a-82c5-c062925cc600">
+  <img width="397" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/2170383a-9692-43df-9e73-5966ed7c15b6">
+  <img width="392" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/3b458be9-7286-49c1-9696-242ea26e1cbd">
+  <img width="996" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/5dabc507-69d3-4f67-af10-c09f01873beb">
 </details>
 
 ## How To Run
