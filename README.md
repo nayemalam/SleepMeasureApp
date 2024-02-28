@@ -42,6 +42,7 @@ yarn android # or react-native run-android
 - based on the annotated example [here](https://gist.github.com/maghis/8c35fe1bb5c7810bdcc6ca389c6cd702), ignored heating
 - there could be multiple intervals of sleep data for a single day, so the data is grouped by date (`screens/Profile` -> `groupedDaysByTsMap`)
 - Assumed 8 hours as deep sleep and 6 hours as light sleep (`src/components/TimeSlept`)
+- Created 3 fictitious family members locally all having an `id` attached to them (this is the challengeId), can be seen in `src/services/FamilyService.ts`
 
 ### Notes
 - Dialogs are not implemented, but the UI is designed to show the dialog
@@ -49,8 +50,10 @@ yarn android # or react-native run-android
 - Added two tabs on the bottom, but the second tab is not necessary, it was just added to show the UI design and also to test selecting a different family member
 - For "tnt" I just counted the total number of tnt's there are, technically it should be extended to show how many were tosses and how many were turns, at this moment there is a Details view that shows at what time the tnt's happened and how many during that time
 - No calendar picker - the days were implemented in `src/components/CircularDayScoreSelector` - though it would be better to have a calendar picker
-- The timeframe selector on the top (DAYS, WEEKS, MONTHS, YEARS) is not implemented, but the UI is designed to show the selector
+- The timeframe selector (`src/components/TimeframeSelector`) on the top (DAYS, WEEKS, MONTHS, YEARS) is not implemented, but the UI is designed to show the selector
 - There is definitely a lot of places for improvement, but I tried to keep it focused on the main features laid out on this [figma](https://www.figma.com/file/wDc9mTgq4Px1CKn57mNkrQ/Mobile-Eng-Take-Home?node-id=0%3A1)
+- It will always show the current day's data, and I tried copying how the current Eight Sleep app design to handle when there is no data
+- Built with the latest version of React Native (0.73.4) as of today's date (Feb 28, 2024)
 ___
 
 
