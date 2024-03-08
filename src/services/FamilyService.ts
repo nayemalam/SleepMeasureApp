@@ -24,6 +24,7 @@ const familyMembers: FamilyMember[] = [
 ];
 
 const getFamilyMembers = async (): Promise<FamilyMember[]> => {
+  // some logic here to fetch family members from a database
   return familyMembers;
 };
 

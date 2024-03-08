@@ -155,7 +155,7 @@ export const renderSleepStatus = (
     return '🤩';
     // if the user has slept more than 6 hours, they are in light sleep
   } else if (hoursSlept >= lightSleepHours) {
-    return '🥱';
+    return '😌';
     // if the user has slept less than 6 hours, they are sleep deprived
   } else {
     return '☕️';

@@ -52,8 +52,10 @@ export default function ProfileScreen({ route }: Props) {
     const groupedDaysByTsMap: { [key: string]: SleepInterval[] } =
       memberSleepInfo?.reduce(
         (acc: { [key: string]: SleepInterval[] }, interval: SleepInterval) => {
-          const dateKey = interval.ts.split('T')[0];
+          const dateKey = interval.ts.split('T')[0]; //"ts": "2017-03-09T08:06:00.000Z" = "2017-03-09"
+          // 2017-03-09 = []
           acc[dateKey] = acc[dateKey] || [];
+          // 2017-03-09 = [interval, ...]
           acc[dateKey].push(interval);
           return acc;
         },
