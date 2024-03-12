@@ -27,6 +27,16 @@ type Props = {
 export default function HomeScreen({ navigation }: Props) {
   const [familyData, setFamilyData] = useState<FamilyMember[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [showFavorites, setShowFavorites] = useState<boolean>(false);
+
+  const handleAdd = (id: string) => {
+    setFavorites([...favorites, id]);
+  };
+
+  const handleDelete = (id: string) => {
+    setFavorites(favorites.filter(favorite => favorite !== id));
+  };
 
   const fetchFamilyMembers = useCallback(async () => {
     try {
@@ -55,24 +65,89 @@ export default function HomeScreen({ navigation }: Props) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Text style={[theme.pageTitleLarge, styles.pageTitleSpacing]}>
-          Family Members
-        </Text>
-        {familyData.map((member: FamilyMember) => (
-          <TouchableOpacity
-            key={member.id}
-            testID={`memberButton-${member.id}`}
-            style={styles.cardStyle}
-            onPress={() =>
-              navigation.navigate('Profile', { familyMember: member })
-            }>
-            <View>
-              <Text style={styles.cardTitle}>{member.name}</Text>
-              <Text style={styles.cardContent}>{member.relation}</Text>
-            </View>
-            <Icon name="chevron-right" size={24} color="white" />
+        <View
+          style={[
+            theme.pageTitleLarge,
+            styles.pageTitleSpacing,
+            {
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 10,
+              width: Dimensions.get('window').width - 20,
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            },
+          ]}>
+          <Text style={theme.pageTitleLarge}>Family Members</Text>
+          <TouchableOpacity onPress={() => setShowFavorites(!showFavorites)}>
+            {showFavorites ? (
+              <Text style={styles.cardTitle}>Hide Favorites</Text>
+            ) : (
+              <Text style={styles.cardTitle}>Show Favorites</Text>
+            )}
           </TouchableOpacity>
-        ))}
+        </View>
+        {showFavorites &&
+          favorites.map(id => {
+            const member = familyData.find(m => m.id === id);
+            if (member) {
+              return (
+                <TouchableOpacity
+                  key={member.id}
+                  testID={`memberButton-${member.id}`}
+                  style={styles.cardStyle}
+                  onPress={() =>
+                    navigation.navigate('Profile', { familyMember: member })
+                  }>
+                  <Text style={styles.cardTitle}>{member.name}</Text>
+                  <Text style={styles.cardContent}>{member.relation}</Text>
+                </TouchableOpacity>
+              );
+            }
+          })}
+        {!showFavorites &&
+          familyData.map((member: FamilyMember) => (
+            <TouchableOpacity
+              key={member.id}
+              testID={`memberButton-${member.id}`}
+              style={styles.cardStyle}
+              onPress={() =>
+                navigation.navigate('Profile', { familyMember: member })
+              }>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 10,
+                }}>
+                {!favorites?.includes(member.id) ? (
+                  <Icon
+                    style={{
+                      fontSize: 24,
+                      color: theme.colors.defaultWhite,
+                    }}
+                    name="star-outline"
+                    onPress={() => handleAdd(member.id)}
+                  />
+                ) : (
+                  <Icon
+                    style={{
+                      fontSize: 24,
+                      color: theme.colors.defaultWhite,
+                    }}
+                    name="star"
+                    onPress={() => handleDelete(member.id)}
+                  />
+                )}
+                <View>
+                  <Text style={styles.cardTitle}>{member.name}</Text>
+                  <Text style={styles.cardContent}>{member.relation}</Text>
+                </View>
+              </View>
+              <Icon name="chevron-right" size={24} color="white" />
+            </TouchableOpacity>
+          ))}
       </ScrollView>
     </SafeAreaView>
   );
@@ -98,6 +173,11 @@ const styles = StyleSheet.create({
   pageTitleSpacing: {
     marginVertical: 20,
     marginHorizontal: 10,
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
+    gap: 10,
+    flexDirection: 'row',
   },
   cardStyle: {
     backgroundColor: theme.colors.slateGray,

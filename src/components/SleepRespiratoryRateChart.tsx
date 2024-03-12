@@ -53,7 +53,7 @@ const SleepRespiratoryRateChart = ({ sleepIntervals }: Props) => {
           borderRadius: 16,
         }}
         withInnerLines={false}
-        formatYLabel={value => `${value}bpm`}
+        formatYLabel={value => `${value}brpm`}
       />
     </View>
   );
