@@ -2,5 +2,11 @@
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "jsx": "react-native"
+  },
+  "paths": {
+    "@services/*": ["src/services/*"],
+    "@screens/*": ["src/screens/"],
+    "@components/*": ["src/components/*"],
+    "@types/*": ["src/types/*"]
   }
 }

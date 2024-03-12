@@ -61,6 +61,7 @@ export default function HomeScreen({ navigation }: Props) {
         {familyData.map((member: FamilyMember) => (
           <TouchableOpacity
             key={member.id}
+            testID={`memberButton-${member.id}`}
             style={styles.cardStyle}
             onPress={() =>
               navigation.navigate('Profile', { familyMember: member })

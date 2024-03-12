@@ -6,4 +6,10 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   automock: false,
   setupFiles: ['<rootDir>/jest.setup.js'],
+  moduleNameMapper: {
+    '^@services/(.*)$': '<rootDir>/src/services/$1',
+    '^@components/(.*)$': '<rootDir>/src/components/$1',
+    '^@screens/(.*)$': '<rootDir>/src/screens/$1',
+    '^@types/(.*)$': '<rootDir>/src/types/$1',
+  },
 };
