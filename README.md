@@ -79,7 +79,7 @@ yarn android # or react-native run-android
 - No calendar picker - the days were implemented in `src/components/CircularDayScoreSelector` - though it would be better to have a calendar picker
 - The timeframe selector (`src/components/TimeframeSelector`) on the top (DAYS, WEEKS, MONTHS, YEARS) is not implemented, but the UI is designed to show the selector
 - There is definitely a lot of places for improvement, but I tried to keep it focused on the main features laid out on this [figma](https://www.figma.com/file/wDc9mTgq4Px1CKn57mNkrQ/Mobile-Eng-Take-Home?node-id=0%3A1)
-- It will always show the current day's data, and I tried copying how the current Eight Sleep app design to handle when there is no data
+- It will always show the current day's data and also handle when there is no data
 - Built with the latest version of React Native (0.73.4) as of today's date (Feb 28, 2024)
 
 ### Troubleshooting
