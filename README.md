@@ -9,33 +9,22 @@ This app, designed for family mode, enables family members to conveniently view 
     - [Assumptions Made](#assumptions-made)
     - [Notes](#notes)
     - [Troubleshooting](#troubleshooting)
-- [Getting Started (React Native Generated README)](#getting-started-react-native-generated-readme)
-  - [Step 1: Start the Metro Server](#step-1-start-the-metro-server)
-  - [Step 2: Start your Application](#step-2-start-your-application)
-    - [For Android](#for-android)
-    - [For iOS](#for-ios)
-  - [Step 3: Modifying your App](#step-3-modifying-your-app)
-  - [Congratulations! :tada:](#congratulations-tada)
-    - [Now what?](#now-what)
-- [Troubleshooting](#troubleshooting-1)
-- [Learn More](#learn-more)
 
 ## Screenshot
-<img width="394" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/7a52beae-3c70-4866-9084-abe58a90f5ae">
+<img width="394" alt="1" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/0bf6d57d-c1fe-4fd7-90a6-70b01914113c">
 
 <details>
   <summary>More screenshots</summary>
-  <img width="1001" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/219bb1e2-efbe-4e5c-b615-1468aeb9ef30">
-  <img width="390" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/ecddebe6-ed8d-4431-9264-931c56272b4e">
-  <img width="997" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/2e81fb5c-fc7c-475d-9410-9db088d66dd1">
-  <img width="994" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/51c80af5-c499-4988-a26b-a638eef6550c">
-  <img width="1003" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/abb052ea-df8a-410b-ab37-b14571399966">
-  <img width="1009" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/bba712d3-c183-40a2-ad17-b05ee57e725a">
-  <img width="995" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/ea583d72-3436-445b-baed-1e2a3ac4753c">
-  <img width="988" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/7377a443-8862-407a-82c5-c062925cc600">
-  <img width="397" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/2170383a-9692-43df-9e73-5966ed7c15b6">
-  <img width="392" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/3b458be9-7286-49c1-9696-242ea26e1cbd">
-  <img width="996" alt="image" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/5dabc507-69d3-4f67-af10-c09f01873beb">
+<img width="1001" alt="2" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/1eae7ca9-1cb3-4aa0-842d-babc79ebc74f">
+<img width="390" alt="3" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/24d261cd-b1c6-466b-a26a-5f1c16a55db0">
+<img width="997" alt="4" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/e6aea2de-3bb7-4425-9374-6002341b6291">
+<img width="994" alt="5" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/474cf020-32cd-491e-8cfa-debca8920749">
+<img width="1003" alt="6" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/906dce4b-e010-469b-a411-e9b5dac94184">
+<img width="1009" alt="7" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/e39587fd-6ce1-4416-9372-81fc8ccd6df1">
+<img width="995" alt="8" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/04069939-74ff-4d53-b589-1ba5a49c41c5">
+<img width="988" alt="9" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/836e2235-ed0a-4e5a-abb8-55b0aa13256b">
+<img width="392" alt="10" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/1f956426-ba4e-46a0-b174-8ee5ba9bb0b2">
+  <img width="996" alt="11" src="https://github.com/nayemalam/family_mode_sleep_data/assets/25883629/8b3bc140-1b37-4836-89d1-fb5e15755b10">
 </details>
 
 ## How To Run
