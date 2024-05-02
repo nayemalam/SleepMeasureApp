@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import EightSleepLogo from '../assets/images/logos/eight-sleep-brand.png';
+import SleepLogo from '../assets/images/sleep-logo.png';
 import { theme } from '../styles/theme';
 import { platform } from '../utils/constants';
 import Avatar from './Avatar';
@@ -24,7 +24,7 @@ export const Header = () => {
       />
       <Avatar text="NA" />
       <Image
-        source={EightSleepLogo}
+        source={SleepLogo}
         style={styles.headerLogo}
         resizeMode="contain"
       />
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
     marginLeft: 6,
   },
   headerLogo: {
-    width: 100,
-    height: '50%',
+    width: 150,
+    resizeMode: 'contain',
   },
   rightContainer: {
     flexDirection: 'row',
